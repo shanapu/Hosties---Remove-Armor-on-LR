@@ -1,7 +1,6 @@
 //Includes
 #include <sourcemod>
-#include <sdktools>
-#include <sdkhooks>
+#include <mystocks>
 #include <hosties>
 #include <lastrequest>
 
@@ -17,7 +16,7 @@ public Plugin myinfo =
 	name = "Hosties - Remove Armor on LR", 
 	author = "shanapu", 
 	description = "Hosties - Remove Kevlar & Helmet on Last Request", 
-	version = "1.0", 
+	version = "1.1", 
 	url = "https://github.com/shanapu"
 };
 
@@ -25,7 +24,7 @@ public Plugin myinfo =
 //Start Timer on Last Request
 public int OnAvailableLR(int Announced)
 {
-	for (int i = 1; i <= MaxClients; i++) if(IsPlayerAlive(i))
+	LoopValidClients(i, true, false)
 	{
 		SetEntProp(i, Prop_Send, "m_ArmorValue", 0);
 		SetEntProp(i, Prop_Send, "m_bHasHelmet", 0);
