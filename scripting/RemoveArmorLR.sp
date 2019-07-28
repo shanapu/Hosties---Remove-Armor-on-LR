@@ -20,7 +20,7 @@ public Plugin myinfo =
 	name = "Hosties - Remove Armor on LR", 
 	author = "shanapu", 
 	description = "Hosties - Set Kevlar, Helmet & HP on Last Request", 
-	version = "1.2", 
+	version = "1.3", 
 	url = "https://github.com/shanapu"
 };
 
@@ -37,7 +37,7 @@ public void OnAvailableLR(int Announced)
 {
 	for (int i = 1; i <= MaxClients; i++)
 	{
-		if (!IsClientInGame(i) || IsFakeClient(i))
+		if (!IsClientInGame(i) || !IsPlayerAlive(i) || IsFakeClient(i))
 			continue;
 
 		if ((GetClientTeam(i) != 2 && gc_iTeam.IntValue == 1) || (GetClientTeam(i) != 3 && gc_iTeam.IntValue == 2))
